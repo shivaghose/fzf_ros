@@ -13,6 +13,7 @@ You need the following to use all the functions:
 ## Usage
 After installing FZF, add the following line to your `~/.bashrc` to source the file:
 ```
+source /path/to/fzf_base.sh
 source /path/to/fzf_ros.sh
 ```
 **Remember to source your `.bashrc`**
