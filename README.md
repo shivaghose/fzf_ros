@@ -25,9 +25,10 @@ Also, it's super useful to have already built your project at least once.
 `rostopic echo <topic>` | `rte` |
 `roscd <package>` | `rcd` |
 `rosnode kill <node>` | `rkill`|
-`catkin build -w $ROS_DIR_PATH -DCMAKE_EXPORT_COMPILE_COMMANDS=ON <package>` | rb
+`catkin build -w $ROS_DIR_PATH -DCMAKE_EXPORT_COMPILE_COMMANDS=ON <package>` | `rb`
+Clean out particular packages | `rclean`|
 
 
 ## Credits
-This file was originally made by the very talented Matthias Wisniowski, I'm putting it on github to keep track of it.
+This file was originally made by the very talented [Matthias Wisniowski](https://github.com/mwisniowski), I'm putting it on github to keep track of it.
 
