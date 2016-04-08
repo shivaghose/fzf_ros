@@ -16,6 +16,22 @@ After installing FZF, add the following line to your `~/.bashrc` to source the f
 source /path/to/fzf_base.sh
 source /path/to/fzf_ros.sh
 ```
+
+### Example installation
+```
+# Install FZF
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+# Clone this repo
+git clone --depth 1 git@github.com:shivaghose/fzf_ros.git ~/.fzf_ros
+
+# Add the following lines to your .bashrc
+source ~/.fzf_ros/fzf_base.sh
+source ~/.fzf_ros/fzf_ros.sh
+
+```
+
 **Remember to source your `.bashrc`**
 
 Also, it's super useful to have already built your project at least once.
@@ -31,5 +47,5 @@ Clean out particular packages | `rclean`|
 
 
 ## Credits
-This file was originally made by the very talented [Matthias Wisniowski](https://github.com/mwisniowski), I'm putting it on github to keep track of it.
+These files were originally made by the very talented [Matthias Wisniowski](https://github.com/mwisniowski), I'm putting it on github to keep track of it.
 
