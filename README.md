@@ -39,9 +39,16 @@ Also, it's super useful to have already built your project at least once.
 ### Commands
  Command | Shortcut |
 ----|----|
-`rostopic echo <topic>` | `rte` |
+**Misc.** | |
 `roscd <package>` | `rcd` |
-`rosnode kill <node>` | `rkill`|
+**Topic tools** | |
+`rostopic echo <topic>` | `rte` |
+`rostopic info <topic>` | `rtinfo` |
+**Node tools** | |
+`rosnode info <node>` | `rninfo`|
+`rosnode ping <node>` | `rnping`|
+`rosnode kill <node>` | `rnkill`|
+**Build tools** | |
 `catkin build -w $ROS_DIR_PATH -DCMAKE_EXPORT_COMPILE_COMMANDS=ON <package>` | `rb`
 Clean out particular packages | `rclean`|
 
