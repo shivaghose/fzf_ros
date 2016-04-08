@@ -53,11 +53,18 @@ rnkill() {
 
 #==============================================================================
 # Build tools
-## Build pacakges
+## Build a package - start immediately on match
 rb() {
     local package
     package=$(rospack list-names | fzf-tmux --query="$1" --select-1 --exit-0) &&
         catkin build -w $ROS_DIR_PATH -DCMAKE_EXPORT_COMPILE_COMMANDS=ON "$package" 
+}
+
+## Build a package - prepare build command on command line for the user to
+#  edit before launching a build
+rbld() {
+    rospack list-names  | fzf-tmux --query="$1" --select-1 --exit-0 |\
+        sed "s/^/catkin build -w \$ROS_DIR_PATH -DCMAKE_EXPORT_COMPILE_COMMANDS=ON  /" | writecmd
 }
 
 ## Clean packages
