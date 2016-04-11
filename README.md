@@ -41,6 +41,8 @@ Also, it's super useful to have already built your project at least once.
 ----|----|
 **Misc.** | |
 `roscd <package>` | `rcd` |
+`roslaunch <path/to/launchfile.launch>` | `rlaunch` |
+`$FZF_ROSBAG_COMMAND <path/to/bag_file.bag>` | `rbag` |
 **Topic tools** | |
 `rostopic echo <topic>` | `rte` |
 `rostopic info <topic>` | `rtinfo` |
@@ -52,7 +54,14 @@ Also, it's super useful to have already built your project at least once.
 `catkin build -w $ROS_DIR_PATH -DCMAKE_EXPORT_COMPILE_COMMANDS=ON <package>` | `rb`
 Clean out particular packages | `rclean`|
 
+**`$FZF_ROSBAG_COMMAND`**
+Use your favourite default `rosbag play` command by adding the following in your `.bashrc`
+```
+export FZF_ROSBAG_COMMAND="rosbag play --pause --clock --hz=200 "
+```
+
 
 ## Credits
 These files were originally made by the very talented [Matthias Wisniowski](https://github.com/mwisniowski), I'm putting it on github to keep track of it.
+
 

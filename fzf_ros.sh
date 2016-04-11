@@ -1,4 +1,11 @@
 #==============================================================================
+# Constants
+if [ -z "$FZF_ROSBAG_PLAY_COMMAND" ]; then
+    # Change this if you want your own rosbag play command
+    export FZF_ROSBAG_COMMAND="rosbag play --pause --clock --hz=200 "
+fi
+
+#==============================================================================
 # General ros tools
 
 ## roscd
@@ -12,6 +19,12 @@ rcd() {
 rlaunch() {
    find $ROS_DIR_PATH -type f -name "*.launch" | fzf-tmux --query="$1" --select-1 --exit-0 |\
         sed "s/^/roslaunch  /" | writecmd
+}
+
+## rosbag play
+rbag() {
+   find ~/ -type f -name "*.bag" | fzf-tmux --query="$1" --select-1 --exit-0 |\
+        sed "s/^/$FZF_ROSBAG_COMMAND  /" | writecmd
 }
 
 #==============================================================================
