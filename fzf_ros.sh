@@ -8,6 +8,12 @@ rcd() {
         roscd "$package"
 }
 
+## roslaunch
+rlaunch() {
+   find $ROS_DIR_PATH -type f -name "*.launch" | fzf-tmux --query="$1" --select-1 --exit-0 |\
+        sed "s/^/roslaunch  /" | writecmd
+}
+
 #==============================================================================
 # Topic related tools
 ## Echo a topic
@@ -61,7 +67,7 @@ rb() {
 }
 
 ## Build a package - prepare build command on command line for the user to
-#  edit before launching a build
+#  edit before starting a build
 rbld() {
     rospack list-names  | fzf-tmux --query="$1" --select-1 --exit-0 |\
         sed "s/^/catkin build -w \$ROS_DIR_PATH -DCMAKE_EXPORT_COMPILE_COMMANDS=ON  /" | writecmd
