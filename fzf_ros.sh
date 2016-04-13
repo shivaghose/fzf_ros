@@ -27,6 +27,12 @@ rbag() {
         sed "s/^/$FZF_ROSBAG_COMMAND  /" | writecmd
 }
 
+## Run executables like rosrun (but not really rosrun)
+rrun() {
+   find $ROS_DIR_PATH/devel/ $ROS_DIR_PATH/src/ -executable -type f | fzf-tmux --query="$1" --select-1 --exit-0 |\
+        sed "s/^//" | writecmd
+}
+
 #==============================================================================
 # Topic related tools
 ## Echo a topic
