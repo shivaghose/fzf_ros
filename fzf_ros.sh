@@ -1,8 +1,19 @@
 #==============================================================================
 # Constants
-if [ -z "$FZF_ROSBAG_PLAY_COMMAND" ]; then
+if [ -n "$FZF_ROSBAG_PLAY_COMMAND" ];
+then
+    echo "FZF_ROS: using existing rosbag play command."
+else
     # Change this if you want your own rosbag play command
-    export FZF_ROSBAG_COMMAND="rosbag play --pause --clock --hz=200 "
+    export FZF_ROSBAG_PLAY_COMMAND="rosbag play --pause --clock --hz=200 "
+fi
+
+if [ -n "$FZF_ROSBAG_DIRS" ];
+then
+    echo "FZF_ROS: using existing rosbag directories."
+else
+    # Change this if you want your own rosbag play command
+    export FZF_ROSBAG_DIRS="$HOME"
 fi
 
 #==============================================================================
@@ -23,8 +34,8 @@ rlaunch() {
 
 ## rosbag play
 rbag() {
-   find ~/ -type f -name "*.bag" | fzf-tmux --query="$1" --select-1 --exit-0 |\
-        sed "s/^/$FZF_ROSBAG_COMMAND  /" | writecmd
+   find $FZF_ROSBAG_DIRS -type f -name "*.bag" | fzf-tmux --query="$1" --select-1 --exit-0 |\
+        sed "s/^/\$FZF_ROSBAG_PLAY_COMMAND/" | writecmd
 }
 
 ## Run executables like rosrun (but not really rosrun)
@@ -82,7 +93,7 @@ rnkill() {
 rb() {
     local package
     package=$(rospack list-names | fzf-tmux --query="$1" --select-1 --exit-0) &&
-        catkin build -w $ROS_DIR_PATH -DCMAKE_EXPORT_COMPILE_COMMANDS=ON "$package" 
+        catkin build -w $ROS_DIR_PATH -DCMAKE_EXPORT_COMPILE_COMMANDS=ON "$package"
 }
 
 ## Build a package - prepare build command on command line for the user to
