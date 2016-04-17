@@ -1,6 +1,9 @@
 # fzf_ros
 FZF tools for ROS!
 
+![](https://raw.githubusercontent.com/shivaghose/media/master/fzf_ros/rcd.gif)
+![](https://raw.githubusercontent.com/shivaghose/media/master/fzf_ros/rte.gif)
+
 ## FZF
 [FZF](https://github.com/junegunn/fzf) is an awesome commandline fuzzy finder. These functions use FZF to help make working with ROS much easier.
 
