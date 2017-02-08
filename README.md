@@ -27,7 +27,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 # Clone this repo
-git clone --depth 1 git@github.com:shivaghose/fzf_ros.git ~/.fzf_ros
+git clone --depth 1 https://github.com/shivaghose/fzf_ros.git ~/.fzf_ros
 
 # Add the following lines to your .bashrc
 source ~/.fzf_ros/fzf_base.sh
