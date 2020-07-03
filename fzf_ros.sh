@@ -1,6 +1,6 @@
 #==============================================================================
 # Constants
-if [ -n "$FZF_ROSBAG_PLAY_COMMAND" ];
+if [ -z "$FZF_ROSBAG_PLAY_COMMAND" ];
 then
     echo "FZF_ROS: using existing rosbag play command."
 else
@@ -8,13 +8,22 @@ else
     export FZF_ROSBAG_PLAY_COMMAND="rosbag play --pause --clock --hz=200 "
 fi
 
-if [ -n "$FZF_ROSBAG_DIRS" ];
+if [ -z "$FZF_ROSBAG_DIRS" ];
 then
     echo "FZF_ROS: using existing rosbag directories."
 else
     # Change this if you want your own rosbag play command
     export FZF_ROSBAG_DIRS="$HOME"
 fi
+
+
+
+#==============================================================================
+# Misc Utilities
+# Used to write a command in the shell (from fzf_base.sh)
+writecmd() {
+  perl -e '$TIOCSTI = 0x5412; $l = <STDIN>; $lc = $ARGV[0] eq "-run" ? "\n" : ""; $l =~ s/\s*$/$lc/; map { ioctl STDOUT, $TIOCSTI, $_; } split "", $l;' -- $1
+}
 
 #==============================================================================
 # General ros tools
@@ -58,7 +67,7 @@ rtinfo() {
     local topic
     rostopic list > /dev/null &&
         topic=$(rostopic list | fzf-tmux --query="$1" --select-1 --exit-0) &&
-        rosnode info "$topic"
+        rostopic info "$topic"
 }
 
 #==============================================================================

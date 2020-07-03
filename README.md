@@ -30,7 +30,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 git clone --depth 1 https://github.com/shivaghose/fzf_ros.git ~/.fzf_ros
 
 # Add the following lines to your .bashrc
-source ~/.fzf_ros/fzf_base.sh
 source ~/.fzf_ros/fzf_ros.sh
 
 ```
